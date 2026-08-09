@@ -40,3 +40,13 @@ resource "aws_subnet" "private" {
     Name = "${var.environment}-private-subnet-${count.index + 1}"
   }
 }
+
+
+# Internet Gateway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.environment}-igw"
+  }
+}
